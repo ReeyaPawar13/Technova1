@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Donation App</title>
+    <style>
+        /* Moving Background */
+        @keyframes moveBg {
+            0% { background-position: 0 0; }
+            100% { background-position: -2000px 0; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://donorbox.org/nonprofit-blog/wp-content/uploads/2018/02/how-to-get-donations.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: moveBg 20s linear infinite; /* 20s for full movement loop */
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #d63384;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar .links {
+            display: flex;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 15px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background: white;
+            color: #d63384;
+            border-radius: 5px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 120px;
+            text-align: left;
+        }
+
+        .contact-container h1, h2 {
+            color: #d63384;
+        }
+
+        p, ul {
+            font-size: 18px;
+            color: #555;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .social-icons a {
+            font-size: 24px;
+            margin: 0 15px;
+            color: #d63384;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #b02a6b;
+        }
+
+        /* Map Image Section */
+        .map-container {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .map-container img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        /* Modal for Social Media Handle */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            width: 30%;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #d63384;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background: #b02a6b;
+        }
+
+        .close {
+            float: right;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="links">
+            <a href="login.html" data-key="login">Login</a>
+            <a href="signup.html" data-key="signup">Sign Up</a>
+            <a href="HOME1.1.html">Home</a>
+            <a href="About1.html">About Us</a>
+            <a href="Reciver1.html">Receiver Request</a>
+            <a href="Donor1.html">Donor Registration</a>
+            <a href="Deliveryboy1.html">Delivery Boy</a>
+            <a href="swastikd.html">Delivery Boy Info</a>
+            <a href="swastikd2.html">Delivery Boy Details</a>
+            <a href="Chatboat1.html">Chatboat</a>
+            <a href="Smartimpacttracker1.html">Smart Impact Tracker</a>
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <h1>Contact Us</h1>
+        <h2>We would love to hear from you!</h2>
+
+        <p><strong>Email:</strong> support@donationapp.com</p>
+        <p><strong>Phone:</strong> +91 123 456 7890</p>
+        <p><strong>Office Address:</strong> 123 Donation Lane, Indiranagar, Nashik, 422001</p>
+
+        <div class="social-icons">
+            <a href="https://www.instagram.com/youraccount" target="_blank">Instagram</a>
+            <a href="https://twitter.com/youraccount" target="_blank">Twitter</a>
+            <a href="https://www.facebook.com/youraccount" target="_blank">Facebook</a>
+        </div>
+    </div>
+
+    <!-- Indiranagar Map Image -->
+    <div class="map-container">
+        <h3>Location Map</h3>
+        <img src="https://www.google.com/maps/d/u/0/thumbnail?mid=1pZb9zDxhtjeo-gBggrl96rSoKPc&hl=en_US" alt="Indiranagar Map">
+    </div>
+
+    <!-- Social Media Modal -->
+    <div id="socialMediaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Follow us on Social Media</h2>
+            <input type="text" id="socialLink" placeholder="Enter your social media handle" required>
+            <button onclick="submitSocialLink()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { 
+            document.getElementById("socialMediaModal").style.display = 'block'; 
+        }
+        
+        function closeModal() { 
+            document.getElementById("socialMediaModal").style.display = 'none'; 
+        }
+
+        function submitSocialLink() {
+            let socialLink = document.getElementById("socialLink").value;
+            if (socialLink === "") {
+                alert("Please enter a social media handle.");
+                return;
+            }
+            alert("Thank you for sharing your handle: " + socialLink);
+            closeModal();
+        }
+    </script>
+
+    <audio autoplay loop>
+        <source src="your-audio-file.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+</body>
+</html>

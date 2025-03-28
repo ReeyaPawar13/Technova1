@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Impact Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://donorbox.org/nonprofit-blog/wp-content/uploads/2018/02/how-to-get-donations.jpg') repeat-x;
+            background-size: cover;
+            animation: moveBackground 20s linear infinite; /* Background Animation */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: -1000px 0; } /* Adjust for slower/faster movement */
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        h1 { color: #d63384; }
+
+        .tracker {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 25px;
+            background-color: #d63384;
+            width: 0%;
+            text-align: center;
+            line-height: 25px;
+            color: white;
+            font-weight: bold;
+        }
+
+        canvas {
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d63384;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #reward {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #coupon {
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 10px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Smart Impact Tracker</h1>
+        <p>Track the impact of your donations and see how you are making a difference!</p>
+        
+        <div class="tracker">
+            <h3>Total Donation Goal: ₹1,00,000</h3>
+            <div class="progress-bar">
+                <div class="progress" id="progress-bar">0%</div>
+            </div>
+            <p id="donation-text">₹0 raised so far</p>
+            <button onclick="addDonation()">Add ₹500 Donation</button>
+        </div>
+
+        <canvas id="impactChart" width="400" height="200"></canvas>
+
+        <div id="reward">
+            <h2>🎉 Congratulations! 🎉</h2>
+            <p>You have successfully reached the donation goal!</p>
+            <p>As a token of appreciation, you have earned a <strong>₹500 Swiggy Coupon</strong>.</p>
+            <div id="coupon">SWIGGY500OFF</div>
+            <button onclick="downloadCoupon()">Download Coupon</button>
+        </div>
+    </div>
+
+    <script>
+        let totalGoal = 100000;
+        let currentDonation = 0;
+
+        function addDonation() {
+            if (currentDonation < totalGoal) {
+                currentDonation += 500;
+                updateProgress();
+                updateChart();
+            }
+        }
+
+        function updateProgress() {
+            let progressPercent = (currentDonation / totalGoal) * 100;
+            document.getElementById("progress-bar").style.width = progressPercent + "%";
+            document.getElementById("progress-bar").textContent = Math.round(progressPercent) + "%";
+            document.getElementById("donation-text").textContent = "₹" + currentDonation + " raised so far";
+
+            if (progressPercent >= 100) {
+                triggerReward();
+            }
+        }
+
+        function triggerReward() {
+            document.getElementById("reward").style.display = "block";
+
+            confetti({
+                particleCount: 200,
+                spread: 100
+            });
+        }
+
+        let ctx = document.getElementById('impactChart').getContext('2d');
+        let impactChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Food', 'Clothes', 'Books', 'Medical Aid', 'Education'],
+                datasets: [{
+                    data: [20, 25, 15, 20, 20],
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0', '#9966ff']
+                }]
+            },
+            options: { responsive: true }
+        });
+
+        function updateChart() {
+            let newValues = impactChart.data.datasets[0].data.map(val => val + 5);
+            impactChart.data.datasets[0].data = newValues;
+            impactChart.update();
+        }
+
+        function downloadCoupon() {
+            let link = document.createElement('a');
+            let couponText = "🎉 Congratulations! 🎉\n\nYou have earned a ₹500 Swiggy Coupon for your generosity.\nUse Code: SWIGGY500OFF\nEnjoy your reward!";
+            let blob = new Blob([couponText], { type: "text/plain" });
+            let url = URL.createObjectURL(blob);
+            link.href = url;
+            link.download = "Swiggy_500_Coupon.txt";
+            link.click();
+        }
+    </script>
+</body>
+</html>

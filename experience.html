@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Work Done</title>
+    <style>
+        /* Moving Background */
+        @keyframes moveBg {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://donorbox.org/nonprofit-blog/wp-content/uploads/2018/02/how-to-get-donations.jpg') repeat center center;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: moveBg 20s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #d63384;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar .links {
+            display: flex;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 15px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background: white;
+            color: #d63384;
+            border-radius: 5px;
+        }
+
+        /* Donation Work Done Section */
+        .work-container {
+            width: 80%;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .work-container h1 {
+            color: #d63384;
+        }
+
+        .donation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: slideIn 1s forwards;
+        }
+
+        .donation img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .donation p {
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            max-width: 600px;
+        }
+
+        .comment-section {
+            margin-top: 20px;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .previous-comments,
+        .add-comment {
+            margin-bottom: 15px;
+        }
+
+        .comment-box {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .comment-btn {
+            background-color: #d63384;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-btn:hover {
+            background-color: #b02a6b;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .donation:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .donation:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .donation:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .donation:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .donation:nth-child(5) {
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="links">
+            <a href="HOME1.1.html">Home</a>
+            <a href="About1.html">About Us</a>
+            <a href="Reciver1.html">Receiver Request</a>
+            <a href="Donor1.html">Donor Registration</a>
+            <a href="Deliveryboy1.html">Delivery Boy</a>
+            <a href="swastikd.html">Delivery Boy Info</a>
+            <a href="swastikd2.html">Delivery Boy Details</a>
+            <a href="Chatboat1.html">Chatboat</a>
+            <a href="Smartimpacttracker1.html">Smart Impact Tracker</a>
+            <a href="contactus.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="work-container">
+        <h1>Work Done - Recent Donations</h1>
+
+        <!-- Donation 1 - Clothes -->
+        <div class="donation">
+            <img src="https://via.placeholder.com/150/000000/FFFFFF?text=Clothes+Donation" alt="Clothes Donation">
+            <p>Clothes Donation: We successfully donated warm clothes to over 500 families in the north, who were struggling during the harsh winter season. These clothes will help them stay warm and healthy.</p>
+
+            <!-- Comment Section for Clothes Donation -->
+            <div class="comment-section">
+                <div class="previous-comments" id="clothes-comments">
+                    <h4>Previous Comments:</h4>
+                    <p><strong>John Doe:</strong> This was such a thoughtful donation. It's great to see people coming together to help those in need.</p>
+                    <p><strong>Jane Smith:</strong> I hope these clothes bring warmth and comfort to the families. Amazing work!</p>
+                </div>
+
+                <div class="add-comment">
+                    <h4>Add Your Comment:</h4>
+                    <textarea class="comment-box" id="clothes-comment-box" placeholder="Enter your comment..."></textarea>
+                    <button class="comment-btn" onclick="submitComment('clothes')">Submit Comment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation 2 - Money -->
+        <div class="donation">
+            <img src="https://via.placeholder.com/150/000000/FFFFFF?text=Money+Donation" alt="Money Donation">
+            <p>Money Donation: A generous donation of $10,000 was raised to support medical treatment for underprivileged children suffering from cancer. This amount will cover their medical expenses for the next year.</p>
+
+            <!-- Comment Section for Money Donation -->
+            <div class="comment-section">
+                <div class="previous-comments" id="money-comments">
+                    <h4>Previous Comments:</h4>
+                    <p><strong>Alok Kumar:</strong> Such a generous donation! This money will make a huge difference in the children's lives. Thank you!</p>
+                </div>
+
+                <div class="add-comment">
+                    <h4>Add Your Comment:</h4>
+                    <textarea class="comment-box" id="money-comment-box" placeholder="Enter your comment..."></textarea>
+                    <button class="comment-btn" onclick="submitComment('money')">Submit Comment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation 3 - Notebooks -->
+        <div class="donation">
+            <img src="https://2.bp.blogspot.com/-mT5jQ-lxI_E/U67HLTCY4rI/AAAAAAAAAPI/yLi4WlGFiuI/s1600/10469810_801606806536668_961888236_o.jpg" alt="Notebooks Donation">
+            <p>Notebooks Donation: We donated 1,000 notebooks to a local school in a remote village, providing students with the tools they need to succeed in their studies.</p>
+
+            <!-- Comment Section for Notebooks Donation -->
+            <div class="comment-section">
+                <div class="previous-comments" id="notebooks-comments">
+                    <h4>Previous Comments:</h4>
+                    <p><strong>Ravi Patel:</strong> Great initiative! These notebooks will help these kids a lot in their learning journey.</p>
+                </div>
+
+                <div class="add-comment">
+                    <h4>Add Your Comment:</h4>
+                    <textarea class="comment-box" id="notebooks-comment-box" placeholder="Enter your comment..."></textarea>
+                    <button class="comment-btn" onclick="submitComment('notebooks')">Submit Comment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation 4 - Organ -->
+        <div class="donation">
+            <img src="https://netivist.org/uploads/forum/discussions/pictures/55fd465d55f4f716b4a6e6e6/organ-donation-pros-and-cons.jpg" alt="Organ Donation">
+            <p>Organ Donation: A life-saving organ donation program successfully helped 5 patients receive kidney transplants. We are proud to support these efforts to save lives.</p>
+
+            <!-- Comment Section for Organ Donation -->
+            <div class="comment-section">
+                <div class="previous-comments" id="organ-comments">
+                    <h4>Previous Comments:</h4>
+                    <p><strong>Seema Rani:</strong> This is truly amazing. Organ donation saves lives, and I hope others will be inspired by this.</p>
+                </div>
+
+                <div class="add-comment">
+                    <h4>Add Your Comment:</h4>
+                    <textarea class="comment-box" id="organ-comment-box" placeholder="Enter your comment..."></textarea>
+                    <button class="comment-btn" onclick="submitComment('organ')">Submit Comment</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donation 5 - Food -->
+        <div class="donation">
+            <img src="https://thumbs.dreamstime.com/z/donation-food-to-children-buriram-province-december-donations-goods-community-thailand-150575966.jpg" alt="Food Donation">
+            <p>Food Donation: We distributed over 10,000 meals to the homeless in our city, ensuring they had food during the cold winter months.</p>
+
+            <!-- Comment Section for Food Donation -->
+            <div class="comment-section">
+                <div class="previous-comments" id="food-comments">
+                    <h4>Previous Comments:</h4>
+                    <p><strong>Deepak Joshi:</strong> What a fantastic way to support the community. No one should have to go hungry, and this initiative is a step in the right direction.</p>
+                </div>
+
+                <div class="add-comment">
+                    <h4>Add Your Comment:</h4>
+                    <textarea class="comment-box" id="food-comment-box" placeholder="Enter your comment..."></textarea>
+                    <button class="comment-btn" onclick="submitComment('food')">Submit Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle comment submission
+        function submitComment(donationType) {
+            // Get the comment text
+            var commentBox = document.getElementById(donationType + '-comment-box');
+            var commentText = commentBox.value.trim();
+
+            // If there's no comment, do nothing
+            if (!commentText) {
+                alert("Please enter a comment.");
+                return;
+            }
+
+            // Create a new comment element
+            var newComment = document.createElement("p");
+            newComment.innerHTML = "<strong>You:</strong> " + commentText;
+
+            // Append the new comment to the relevant donation's comment section
+            document.getElementById(donationType + '-comments').appendChild(newComment);
+
+            // Clear the comment box after submission
+            commentBox.value = "";
+        }
+    </script>
+
+</body>
+</html>

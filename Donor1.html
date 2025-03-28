@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://donorbox.org/nonprofit-blog/wp-content/uploads/2018/02/how-to-get-donations.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: moveBackground 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: center top; }
+            100% { background-position: center bottom; }
+        }
+
+        .navbar {
+            background-color: #d63384;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            background-color: #b0276b;
+            border-radius: 5px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 80px;
+        }
+        h1 {
+            color: #d63384;
+        }
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .hidden {
+            display: none;
+        }
+        .qr-code img {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: auto;
+            border-radius: 10px;
+            animation: moveQR 2s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveQR {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donor Registration</h1>
+        <form id="donorForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="address" placeholder="Address" required>
+            <input type="text" id="country" placeholder="Country" required>
+            <input type="text" id="state" placeholder="State" required>
+            <input type="text" id="district" placeholder="District" required>
+            
+            <label for="donationType">Type of Donation:</label>
+            <select id="donationType" onchange="showDonationFields()">
+                <option value="" disabled selected>Select</option>
+                <option value="money">Money</option>
+                <option value="clothes">Clothes</option>
+                <option value="notebooks">Notebooks</option>
+                <option value="food">Food</option>
+                <option value="organ">Organ</option>
+            </select>
+
+            <div id="moneySection" class="hidden">
+                <p>Scan QR Code to Donate:</p>
+                <div class="qr-code">
+                    <img src="https://thumbs.dreamstime.com/z/qr-code-icon-white-background-symbol-sign-vector-illustrationisolated-141796143.jpg" alt="QR Code">
+                </div>
+            </div>
+
+            <div id="clothesSection" class="hidden">
+                <input type="number" id="clothesQuantity" placeholder="Quantity">
+                <input type="text" id="clothesType" placeholder="Type of Clothes (Shirt, Pants, etc.)">
+                <input type="text" id="clothesSize" placeholder="Size Available (S, M, L, etc.)">
+            </div>
+
+            <div id="notebooksSection" class="hidden">
+                <input type="number" id="notebooksQuantity" placeholder="Number of Notebooks">
+            </div>
+
+            <div id="foodSection" class="hidden">
+                <input type="text" id="foodQuantity" placeholder="Food Quantity (in kg)">
+            </div>
+
+            <div id="organSection" class="hidden">
+                <input type="text" id="organType" placeholder="Which Organ?">
+                <label>Upload Medical Report:</label>
+                <input type="file" id="organReport">
+            </div>
+
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function showDonationFields() {
+            let type = document.getElementById('donationType').value;
+            document.getElementById('moneySection').classList.add('hidden');
+            document.getElementById('clothesSection').classList.add('hidden');
+            document.getElementById('notebooksSection').classList.add('hidden');
+            document.getElementById('foodSection').classList.add('hidden');
+            document.getElementById('organSection').classList.add('hidden');
+
+            if (type === 'money') {
+                document.getElementById('moneySection').classList.remove('hidden');
+            } else if (type === 'clothes') {
+                document.getElementById('clothesSection').classList.remove('hidden');
+            } else if (type === 'notebooks') {
+                document.getElementById('notebooksSection').classList.remove('hidden');
+            } else if (type === 'food') {
+                document.getElementById('foodSection').classList.remove('hidden');
+            } else if (type === 'organ') {
+                document.getElementById('organSection').classList.remove('hidden');
+            }
+        }
+
+        function submitForm() {
+            alert("Donation request sent successfully!");
+            document.getElementById("donorForm").reset();
+            showDonationFields();
+        }
+    </script>
+</body>
+</html>

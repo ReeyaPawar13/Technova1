@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://donorbox.org/nonprofit-blog/wp-content/uploads/2018/02/how-to-get-donations.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: moveBackground 10s infinite linear;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 50% 50%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h1 {
+            color: #d63384;
+        }
+        .buttons {
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d63384;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .slide {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 20px;
+            text-align: left;
+        }
+        .slide img {
+            width: 350px;
+            height: auto;
+            border-radius: 10px;
+            float: right;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Learn more about our mission and purpose.</p>
+        
+        <div class="buttons">
+            <button onclick="showSlide(0)">Vision</button>
+            <button onclick="showSlide(1)">Motive</button>
+            <button onclick="showSlide(2)">Goal</button>
+        </div>
+        
+        <div class="slide" id="slide0">
+            <h3>Our Vision</h3>
+            <img src="https://c8.alamy.com/comp/2R8EE12/hands-of-people-donate-volunteers-give-hearts-to-donation-box-flat-vector-illustration-hope-solidarity-aid-for-refugees-concept-2R8EE12.jpg" alt="Vision Image">
+            <p>We envision a world where generosity and kindness bring positive change to lives, ensuring that no one is left without the essentials of life.</p>
+            <p>Our vision is to create a global community where individuals, businesses, and organizations come together to support those in need. We strive to eliminate hunger, provide education, and ensure that every person has access to fundamental resources like clothing and medical aid.</p>
+            <p>Through technological advancements, transparency, and active participation, we aim to create a sustainable and scalable platform for seamless donation processes.</p>
+        </div>
+        
+        <div class="slide" id="slide1">
+            <h3>Our Motive</h3>
+            <img src="https://static.vecteezy.com/system/resources/previews/001/236/372/non_2x/hand-with-people-as-a-reference-of-charity-donation-vector.jpg" alt="Motive Image">
+            <p>Our main motive is to connect donors with those in need, creating a seamless platform where help reaches the right hands effortlessly.</p>
+            <p>We believe that every individual has the power to bring change. Our motive is to bridge the gap between those who have and those who need, making sure that no resource goes to waste.</p>
+            <p>Through our initiative, we encourage responsible donations, ensuring that items reach the right people at the right time, making the biggest impact possible.</p>
+        </div>
+        
+        <div class="slide" id="slide2">
+            <h3>Our Goal</h3>
+            <img src="https://thumbs.dreamstime.com/b/giving-donations-charity-foundation-support-concept-75686415.jpg" alt="Goal Image">
+            <p>We aim to build a large network of donors and receivers, making donation processes easier and more impactful for society.</p>
+            <p>Our goal is to create a transparent and user-friendly system where people can donate with confidence, knowing their contributions are making a real difference.</p>
+            <p>We strive to expand our reach globally, ensuring that donations are distributed efficiently to people in need, regardless of location.</p>
+            <p>By integrating technology, we aim to streamline the donation process, allowing real-time tracking and reports to enhance donor trust and engagement.</p>
+        </div>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        function showSlide(index) {
+            let slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.style.display = 'none');
+            slides[index].style.display = 'block';
+        }
+        showSlide(0);
+    </script>
+</body>
+</html>

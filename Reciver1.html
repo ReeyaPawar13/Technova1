@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://donorbox.org/nonprofit-blog/wp-content/uploads/2018/02/how-to-get-donations.jpg') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: moveBackground 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: center top; }
+            100% { background-position: center bottom; }
+        }
+
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 80px;
+        }
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .popup button {
+            background-color: #d63384;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Receiver Request</h1>
+        <form id="receiverForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <input type="email" placeholder="Email" required>
+            <input type="text" placeholder="Address" required>
+            <input type="text" placeholder="Country" required>
+            <input type="text" placeholder="State" required>
+            <input type="text" placeholder="District" required>
+            
+            <label for="donationType">Select Donation Type:</label>
+            <select id="donationType" onchange="showFields()" required>
+                <option value="">--Select--</option>
+                <option value="money">Money</option>
+                <option value="clothes">Clothes</option>
+                <option value="notebooks">Notebooks</option>
+                <option value="food">Food</option>
+                <option value="organ">Organ</option>
+            </select>
+            
+            <div id="moneySection" class="hidden">
+                <input type="number" placeholder="Amount">
+            </div>
+            
+            <div id="clothesSection" class="hidden">
+                <input type="number" placeholder="Quantity" min="1">
+                <input type="text" placeholder="Type of Clothes (e.g., Shirt, Pants, Jacket)">
+                <input type="text" placeholder="Size (S, M, L, XL)">
+            </div>
+            
+            <div id="notebooksSection" class="hidden">
+                <input type="number" placeholder="Number of Books" min="1">
+            </div>
+            
+            <div id="foodSection" class="hidden">
+                <input type="text" placeholder="Quantity (e.g., 5kg rice, 10 packets)">
+            </div>
+            
+            <div id="organSection" class="hidden">
+                <input type="text" placeholder="Organ to be donated (e.g., Kidney, Liver)">
+                <label>Upload Medical Report:</label>
+                <input type="file">
+            </div>
+            
+            <label for="urgency">Urgency Level:</label>
+            <select id="urgency" required>
+                <option value="urgent">Urgent</option>
+                <option value="week">Within a week</option>
+                <option value="possible">As soon as possible</option>
+            </select>
+            
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+    
+    <div id="popup" class="popup">
+        <p>Request Sent Successfully!</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+    
+    <script>
+        function showFields() {
+            let type = document.getElementById("donationType").value;
+            document.getElementById("moneySection").classList.add("hidden");
+            document.getElementById("clothesSection").classList.add("hidden");
+            document.getElementById("notebooksSection").classList.add("hidden");
+            document.getElementById("foodSection").classList.add("hidden");
+            document.getElementById("organSection").classList.add("hidden");
+            
+            if (type === "money") document.getElementById("moneySection").classList.remove("hidden");
+            else if (type === "clothes") document.getElementById("clothesSection").classList.remove("hidden");
+            else if (type === "notebooks") document.getElementById("notebooksSection").classList.remove("hidden");
+            else if (type === "food") document.getElementById("foodSection").classList.remove("hidden");
+            else if (type === "organ") document.getElementById("organSection").classList.remove("hidden");
+        }
+
+        document.getElementById("receiverForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            document.getElementById("popup").style.display = "block";
+            this.reset();
+        });
+        
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+</body>
+</html>
